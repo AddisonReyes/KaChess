@@ -1,13 +1,19 @@
 import pygame
 
+from .chess_board import ChessBoard
+
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 
 
-def main():
+def game():
     running = True
+
+    cb = ChessBoard()
+    cb.display_board()
+
     while running:
         # poll for events
         # pygame.QUIT event means the user clicked X to close your window
@@ -26,7 +32,3 @@ def main():
         clock.tick(60)  # limits FPS to 60
 
     pygame.quit()
-
-
-if __name__ == "__main__":
-    main()

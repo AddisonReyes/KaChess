@@ -12,7 +12,6 @@ def game():
     running = True
 
     cb = ChessBoard()
-    cb.display_board()
 
     while running:
         # poll for events
@@ -25,6 +24,7 @@ def game():
         screen.fill("purple")
 
         # RENDER YOUR GAME HERE
+        cb.display_board(screen)
 
         # flip() the display to put your work on screen
         pygame.display.flip()

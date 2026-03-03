@@ -1,14 +1,20 @@
+import os
+
 import pygame
 
 from .chess_board import ChessBoard
 
-# pygame setup
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
+def game(second_screen: bool = False):
+    pygame.init()
 
+    if second_screen:
+        desktop_sizes = pygame.display.get_desktop_sizes()
+        if len(desktop_sizes) > 1:
+            os.environ["SDL_VIDEO_WINDOW_POS"] = f"{desktop_sizes[0][0] + 40},40"
 
-def game():
+    screen = pygame.display.set_mode((1280, 720))
+    clock = pygame.time.Clock()
+
     running = True
 
     cb = ChessBoard()

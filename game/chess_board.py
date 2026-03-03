@@ -50,7 +50,7 @@ class ChessBoard:
     def create_board(self):
         for i in range(8):
             for j in range(8):
-                color = "white" if (i + j) % 2 == 0 else "black"
+                color = "white" if (i + j) % 2 == 0 else "brown"
                 square = BoardSquare(
                     x=j * 64,
                     y=i * 64,

@@ -1,18 +1,16 @@
-import os
-
 import pygame
 
 from .chess_board import ChessBoard
 
+
 def game(second_screen: bool = False):
     pygame.init()
 
-    if second_screen:
-        desktop_sizes = pygame.display.get_desktop_sizes()
-        if len(desktop_sizes) > 1:
-            os.environ["SDL_VIDEO_WINDOW_POS"] = f"{desktop_sizes[0][0] + 40},40"
+    display_index = 0
+    if second_screen and pygame.display.get_num_displays() > 1:
+        display_index = 1
 
-    screen = pygame.display.set_mode((1280, 720))
+    screen = pygame.display.set_mode((8 * 64 + 64, 8 * 64 + 64), display=display_index)
     clock = pygame.time.Clock()
 
     running = True
@@ -27,7 +25,7 @@ def game(second_screen: bool = False):
                 running = False
 
         # fill the screen with a color to wipe away anything from last frame
-        screen.fill("purple")
+        screen.fill("grey16")
 
         # RENDER YOUR GAME HERE
         cb.display_board(screen)

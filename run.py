@@ -73,6 +73,7 @@ def run_with_hotreload(interval: float, second_screen: bool) -> None:
                 print("Detected source changes. Reloading game...")
                 previous_snapshot = current_snapshot
                 child = restart_child_process(child, second_screen=second_screen)
+
     except KeyboardInterrupt:
         pass
     finally:

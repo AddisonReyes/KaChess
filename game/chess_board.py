@@ -41,6 +41,9 @@ class BoardSquare:
             rect=pygame.Rect(self.x, self.y, self.width, self.height),
         )
 
+    def __str__(self):
+        return f"BoardSquare(row={self.row}, col={self.col}, color={self.color}, piece={self.piece})"
+
 
 class ChessBoard:
     def __init__(self):
@@ -50,10 +53,10 @@ class ChessBoard:
     def create_board(self):
         for i in range(8):
             for j in range(8):
-                color = "white" if (i + j) % 2 == 0 else "brown"
+                color = "white" if (i + j) % 2 == 0 else "grey16"
                 square = BoardSquare(
-                    x=j * 64,
-                    y=i * 64,
+                    x=i * 64 + 32,
+                    y=j * 64 + 32,
                     row=i,
                     col=j,
                     color=color,
@@ -61,5 +64,11 @@ class ChessBoard:
                 self.board.append(square)
 
     def display_board(self, screen):
+        pygame.draw.rect(
+            surface=screen,
+            color="white",
+            rect=pygame.Rect(30, 30, 516, 516),
+        )
+
         for row in self.board:
             row.draw(screen)
